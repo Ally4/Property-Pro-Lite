@@ -1,6 +1,14 @@
 import posts from '../models/posts';
 import jwt from 'jsonwebtoken';
 import validateAd from '../validators/posts';
+
+/* eslint-disable quotes */
+/* eslint-disable comma-spacing */
+/* eslint-disable key-spacing */
+/* eslint-disable indent */
+/* eslint-disable object-curly-spacing */
+/* eslint-disable no-trailing-spaces */
+
 const Post = (req, res) => {
   const { error } = validateAd.validation(req.body);
   if (error) {
@@ -14,6 +22,7 @@ const Post = (req, res) => {
   } = req.body;
 
   if (req.body.price <= 1000) {
+
     return res.status(400).json({ status: 400, message: "Not allowed to post, the price is low" });
   }
 const newPost = {
@@ -31,6 +40,7 @@ const newPost = {
 
   posts.push(newPost);
   return res.status(201).json({ status: 'success', token, data: newPost });
+
 };
 
 export default Post;
