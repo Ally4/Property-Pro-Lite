@@ -1,15 +1,10 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable linebreak-style */
-/* eslint-disable import/no-unresolved */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
 /* eslint-disable quotes */
 /* eslint-disable comma-spacing */
 /* eslint-disable key-spacing */
 /* eslint-disable indent */
 /* eslint-disable object-curly-spacing */
 /* eslint-disable no-trailing-spaces */
+
 import moment from 'moment';
 import posts from '../models/posts';
 import users from '../models/users';
@@ -23,6 +18,7 @@ const Post = (req, res) => {
 
   const id = parseInt(posts.length + 1, 10);
   const {
+
     email, type, state, city, address, price,
   } = req.body;
 
@@ -32,6 +28,7 @@ return res.status(400).json({status: 400, message:"Not allowed to post, the pric
 
   const newPost = {
     id, email, status:("Available") , type, state, city, address, price,
+
   };
 
 
