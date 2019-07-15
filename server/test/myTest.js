@@ -17,13 +17,6 @@ import app from "../app";
 chai.use(chaiHttp);
 chai.should();
 
-describe("before each", () => {
-    beforeEach((done) => {
-        done();
-    })
-})
-
-
 describe("User tests", () => {
     it("User should be able to login", (done) => {
         chai.request(app).post("/api/v1/auth/signin").send({
@@ -32,6 +25,8 @@ describe("User tests", () => {
         }).end((err, res) => {
             res.should.have.status(200);
             res.body.should.be.an("object");
+            res.body.should.be.property('data');
+
             done();
         })
     });
@@ -81,5 +76,17 @@ describe("User tests", () => {
             });
 
     })
+    it("Should not be able to login when no e-mail and no password", (done) => {
+        chai.request(app).post("/api/v1/auth/signin").send({
+            email: "",
+            password: ""
+        })
+            .end((err, res) => {
+                res.should.has.status(404);
+                done();
+            });
+
+    })
+
 
 })

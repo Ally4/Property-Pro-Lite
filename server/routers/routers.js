@@ -56,8 +56,8 @@ router.delete('/property/:id', deletePosted);
 //This is to get all the posted properties.
 router.get('/property/', allPosted);
 
-//This is to get all the posted properties.
-router.get('/property/:id/type', type);
+//This is to get all the posted properties by type.
+router.get('/property', type);
 
 
 export default router;

@@ -37,37 +37,41 @@ const signup = (req, res) =>{
   const id = parseInt(users.length + 1, 10);
   const findUser = users.find(u => u.email === req.body.email);
   if (findUser) {
-    res.status(403).send({
-      "status": 403,
+
+    return res.status(409).send({
+      "status": 409,
       "message": "Already in the system."
     });
   }
 
-  const { email, first_name, last_name, password, phone_number, address, is_admin } = req.body;
+
+  const { email, firstName, lastName, password, phoneNumber, address, isAdmin } = req.body;
   const hashpassword = bcrypt.hashSync(password, 10);
   users.push({
-    id, email, first_name, last_name, hashpassword, phone_number, address, is_admin,
+    id, email, firstName, lastName, hashpassword, phoneNumber, address, isAdmin,
+
   });
 
   const payload = {
     id,
     email,
-    first_name,
-    last_name,
-    phone_number,
+
+    firstName,
+    lastName,
+    phoneNumber,
     address,
-    is_admin,
+    isAdmin,
+
   };
 
   const token = jwt.sign(payload, process.env.TOKEN, { expiresIn: '24hrs' });
-
-  res.status(201).json({
+  return res.status(201).json({
     status: 'success',
     data: {
       token,
       id,
-      first_name,
-      last_name,
+      firstName,
+      lastName,
       email,
     },
   });

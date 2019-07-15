@@ -32,7 +32,9 @@ const signin = (req, res) => {
 
   // Check if the entered password is correct
 
-  const comparePassword = bcrypt.compareSync(password, user.password);
+
+  const comparePassword = bcrypt.compareSync(password, user.hashpassword);
+
 
   //   if password is Incorrect
   if (!comparePassword) {

@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 app.use('/api/v1/', router);
 
-const port = process.env.PORT || 2000;
+const port = process.env.PORT || 1000;
 
 app.listen(port, () => { console.log(`app is listening on ${port}...`); });
 

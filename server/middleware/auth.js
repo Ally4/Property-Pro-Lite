@@ -8,7 +8,7 @@ const auth = (req, res, next) => {
     const header = req.headers.authorization;
     if (!header || header === '') return res.status(401).json({ status: 401, error: 'Unauthorized' });
 
-    const token = jwt.verify(header, process.env.SECRET_KEY);
+    const token = jwt.verify(header, process.env.TOKEN);
     req.user = token;
     next();
   } catch {

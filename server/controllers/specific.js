@@ -8,7 +8,6 @@ const getpost = (req, res) => {
     res.status(404).json({
       status: 404,
       message: 'post not found',
-      data: [],
     });
   } else {
     res.status(200).json({
