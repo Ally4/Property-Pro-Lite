@@ -45,6 +45,11 @@ const Post = (req, res) => {
 
   
  
+
+
+
+  posts.push(newPost);
+  return res.status(201).json({ status: 'success', data: newPost });
 };
 
 export default Post;

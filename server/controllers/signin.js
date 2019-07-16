@@ -36,6 +36,7 @@ const signin = (req, res) => {
   const comparePassword = bcrypt.compareSync(password, user.password);
 
 
+
   //   if password is Incorrect
   if (!comparePassword) {
     return res.status(400).json({

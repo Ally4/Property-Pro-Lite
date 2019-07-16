@@ -51,6 +51,7 @@ const sold = (req, res) => {
     res.status(400).send({ status: 400, error: "invalid token" });
   }
   
+
 };
 
 export default sold;

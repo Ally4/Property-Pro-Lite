@@ -35,6 +35,7 @@ try{
 
 if(!isOwner)  return res.status(401).json({ status: 401, message: 'not the owner' });
 
+
  
   const postId = req.params.id;
   const post = posts.find(p => p.id == postId);
@@ -47,7 +48,7 @@ if(!isOwner)  return res.status(401).json({ status: 401, message: 'not the owner
   const postIndex = posts.indexOf(post);
   const keys = Object.keys(req.body);
   const values = Object.values(req.body);
-  
+
 
   // eslint-disable-next-line guard-for-in
   for (let property in post) {
@@ -62,9 +63,10 @@ res.status(200).json({
   status: 'success',
   data: post,
 });
+
 }catch(err){
   res.status(400).send({ status: 400, error: "invalid token" });
 }
- 
+
 };
 export default updatePost;

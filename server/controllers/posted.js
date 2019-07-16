@@ -15,6 +15,7 @@ const allPosted = (req, res) => {
   res.status(200).json({
     status: 200,
     data: posts,
+
   });
 };
 export default allPosted;

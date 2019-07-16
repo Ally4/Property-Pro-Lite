@@ -28,6 +28,7 @@ const isOwner = posts.find(p => p.owner===token.email);
 
   const post = posts.find(p => p.id === parseInt(req.params.id, 10));
 if(!isOwner)  return res.status(401).json({ status: 401, message: 'not the owner' });
+
   if (!post) {
     res.status(404).json({
       status: 404,
@@ -43,10 +44,11 @@ if(!isOwner)  return res.status(401).json({ status: 401, message: 'not the owner
     status: 200,
     data: 'property successfully deleted',
   });
+
   } catch(e){
     res.status(400).send({ status:400, error:"invalid token" });
   }
- 
+
 };
 
 export default deletePosted;
