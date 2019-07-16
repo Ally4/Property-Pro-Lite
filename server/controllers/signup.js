@@ -14,6 +14,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable object-curly-newline */
 /* eslint-disable camelcase */
+
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import bcrypt from 'bcrypt';
@@ -22,14 +23,16 @@ import users from '../models/users';
 
 dotenv.config();
 
-const signup = (req, res) =>{
+const signup = (req, res) => {
+
 
 
   const { error } = validateSignup.validation(req.body);
   if (error) {
-    return{
-      "status": 400,
-      "message": error.details[0].message
+
+    return {
+      status: 400,
+      message: error.details[0].message,
     };
   }
 
@@ -39,13 +42,19 @@ const signup = (req, res) =>{
   if (findUser) {
 
     return res.status(409).send({
-      "status": 409,
-      "message": "Already in the system."
+
+      status: 409,
+      message: 'Already in the system.',
+
     });
   }
 
 
-  const { email, firstName, lastName, password, phoneNumber, address, isAdmin } = req.body;
+
+  const {
+    email, firstName, lastName, password, phoneNumber, address, isAdmin,
+  } = req.body;
+
   const hashpassword = bcrypt.hashSync(password, 10);
   users.push({
     id, email, firstName, lastName, hashpassword, phoneNumber, address, isAdmin,
@@ -59,6 +68,7 @@ const signup = (req, res) =>{
     firstName,
     lastName,
     phoneNumber,
+
     address,
     isAdmin,
 
@@ -70,11 +80,16 @@ const signup = (req, res) =>{
     data: {
       token,
       id,
+
+      hashpassword,
+
       firstName,
       lastName,
       email,
     },
   });
-}
+
+};
+
 
 export default signup;
