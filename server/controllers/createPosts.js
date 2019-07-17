@@ -1,14 +1,12 @@
-import posts from '../models/posts';
-import jwt from 'jsonwebtoken';
-import validateAd from '../validators/posts';
-
 /* eslint-disable quotes */
-/* eslint-disable comma-spacing */
-/* eslint-disable key-spacing */
+/* eslint-disable import/order */
+/* eslint-disable padded-blocks */
 /* eslint-disable indent */
 /* eslint-disable object-curly-spacing */
 /* eslint-disable no-trailing-spaces */
-
+import posts from '../models/posts';
+import jwt from 'jsonwebtoken';
+import validateAd from '../validators/posts';
 const Post = (req, res) => {
   const { error } = validateAd.validation(req.body);
   if (error) {
@@ -28,7 +26,7 @@ const Post = (req, res) => {
 const newPost = {
     id, email, status: ("Available"), type, state, city, address, price,
 
-  };
+
 
   const payload = {
     email: req.body.email,
