@@ -24,7 +24,7 @@
     "cloudinary": "^1.14.0",
     "coveralls": "^3.0.5",
     "dotenv": "^8.0.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "joi": "^14.3.1",
     "jsonwebtoken": "^8.5.1",
     "mocha": "^6.1.4",
